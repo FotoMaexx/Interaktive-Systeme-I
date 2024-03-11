@@ -12,7 +12,7 @@ plugins:
 
 # Exkludierte Dateien und Verzeichnisse
 exclude:
-  - node_modules/
+  - assets/node_modules/
   - .sass-cache/
   - .jekyll-cache/
   - .nojekyll
@@ -20,7 +20,7 @@ exclude:
   - Gemfile.lock
   - package.json
   - package-lock.json
-  - tailwind.config.js
+  - assets/js/tailwind.config.js
   - postcss.config.js
   - README.md
   - LICENSE
