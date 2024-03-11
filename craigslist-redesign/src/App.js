@@ -3,6 +3,7 @@ import Header from './components/header';
 import Hero from './components/hero';
 import Categories from './components/categories';
 import ProductSlider from './components/homepage-product-slider';
+import { FooterWithSocialLinks as Footer } from './components/footer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <Categories />
       <ProductSlider />
+      <Footer />
     </div>
   );
 }
