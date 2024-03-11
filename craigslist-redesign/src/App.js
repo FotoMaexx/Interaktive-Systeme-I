@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/header';
 import Hero from './components/hero';
 import Categories from './components/categories';
+import ProductSlider from './components/homepage-product-slider';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       {/* <Header /> */}
       <Hero />
       <Categories />
+      <ProductSlider />
     </div>
   );
 }
