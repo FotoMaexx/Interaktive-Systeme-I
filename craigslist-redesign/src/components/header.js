@@ -15,6 +15,7 @@ import {
   } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import logo from '../assets/img/logo.svg';
+import { Link } from 'react-router-dom';
 
 const community = [
     { name: 'Soziales & Veranstaltungen', description: 'Engagiere dich sozial und finde Veranstaltungen.', href: '#', icon: GlobeAltIcon },
@@ -60,10 +61,10 @@ export default function Example() {
     <header className="bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Craigslist</span>
             <img className="h-8 w-auto" src={logo} alt="" />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
