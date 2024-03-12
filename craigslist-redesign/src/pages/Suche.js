@@ -3,7 +3,7 @@ import Header from '../components/header';
 import FilterPage from '../components/filterpage';
 import { FooterWithSocialLinks as Footer } from '../components/footer';
 
-function Home() {
+function Suche() {
   return (
     <div className="App">
       <Header />
@@ -12,5 +12,5 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
+Suche
+export default Suche;
