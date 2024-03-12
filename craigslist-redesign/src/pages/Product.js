@@ -1,14 +1,16 @@
 import React from 'react';
-import Hero from '../components/hero';
+import Header from '../components/header';
 import { FooterWithSocialLinks as Footer } from '../components/footer';
+import ProductOVerview from '../components/product';
 
 function Product() {
-  return (
-    <div className="App">
-      <Hero />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+            <ProductOVerview />
+            <Footer />
+        </div>
+    );
 }
 
 export default Product;

@@ -12,5 +12,4 @@ function Suche() {
     </div>
   );
 }
-Suche
 export default Suche;
