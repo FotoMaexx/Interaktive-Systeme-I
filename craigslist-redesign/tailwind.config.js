@@ -7,5 +7,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@material-tailwind/react'),
+    require('@tailwindcss/forms'),
   ],
 }
