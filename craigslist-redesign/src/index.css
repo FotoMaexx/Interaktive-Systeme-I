@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.no-border {
-  border: none;
+.no-border, .no-border:focus, .no-border:active, .no-border:hover{
+  border: none !important;
 }

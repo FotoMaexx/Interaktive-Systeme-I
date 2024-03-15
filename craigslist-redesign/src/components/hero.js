@@ -46,7 +46,7 @@ export default function Example() {
                 onChange={(e) => setSuche(e.target.value)}
                 size={suche.length || "Fahrrad".length} // Verwende die Länge des Platzhaltertexts direkt
                 placeholder="Fahrrad"
-                className="max-w-xs text-3xl underline font-light tracking-tight text-gray-900 sm:text-5xl bg-transparent"
+                className="no-border max-w-xs text-3xl underline font-light tracking-tight text-gray-900 sm:text-5xl bg-transparent"
               />
             </h2>
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
@@ -57,7 +57,7 @@ export default function Example() {
                 onChange={(e) => setOrt(e.target.value)}
                 size={ort.length || "Ulm".length} // Verwende die Länge des Platzhaltertexts direkt
                 placeholder="Ulm"
-                className="max-w-xs text-3xl underline font-light tracking-tight text-gray-900 sm:text-5xl bg-transparent"
+                className="no-border max-w-xs text-3xl underline font-light tracking-tight text-gray-900 sm:text-5xl bg-transparent"
               />
             </h2>
             <div className="mt-10 flex items-center justify-center gap-x-6">
