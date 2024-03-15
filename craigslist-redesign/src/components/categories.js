@@ -1,23 +1,24 @@
+import categoryImage1 from '../assets/img/Categories1.jpg';
+import categoryImage2 from '../assets/img/Categories2.jpg';
+import categoryImage3 from '../assets/img/Categories3.jpg';
+
 const callouts = [
     {
-      name: 'Desk and Office',
-      description: 'Work from home accessories',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-      imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
+      name: 'Elektronik & Haushalt',
+      description: 'Alles was du für dein Zuhause brauchst',
+      imageSrc: categoryImage1,
       href: '#',
     },
     {
-      name: 'Self-Improvement',
-      description: 'Journals and note-taking',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-      imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
+      name: 'Fahrzeuge & Zubehör',
+      description: 'Dein nächstes Auto wartet auf dich',
+      imageSrc: categoryImage2,
       href: '#',
     },
     {
-      name: 'Travel',
-      description: 'Daily commute essentials',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-      imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+      name: 'Technik & Hilfe',
+      description: 'Finde den passenden Service für dein Anliegen',
+      imageSrc: categoryImage3,
       href: '#',
     },
   ]
@@ -35,7 +36,6 @@ const callouts = [
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
                       src={callout.imageSrc}
-                      alt={callout.imageAlt}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
