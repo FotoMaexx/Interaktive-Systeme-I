@@ -53,9 +53,9 @@ export default function Example() {
               In:{" "}
               <input
                 type="text"
-                value={suche}
-                onChange={(e) => setSuche(e.target.value)}
-                size={suche.length || "Ulm".length} // Verwende die Länge des Platzhaltertexts direkt
+                value={ort}
+                onChange={(e) => setOrt(e.target.value)}
+                size={ort.length || "Ulm".length} // Verwende die Länge des Platzhaltertexts direkt
                 placeholder="Ulm"
                 className="max-w-xs text-3xl underline font-light tracking-tight text-gray-900 sm:text-5xl bg-transparent"
               />
