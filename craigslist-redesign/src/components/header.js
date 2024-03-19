@@ -21,6 +21,7 @@ const community = [
     { name: 'Soziales & Veranstaltungen', description: 'Engagiere dich sozial und finde Veranstaltungen.', href: '#', icon: GlobeAltIcon },
     { name: 'Hilfe & Bildung', description: 'Biete oder finde Hilfe und Bildungsangebote.', href: '#', icon: UserGroupIcon },
     { name: 'Hobbys & Gruppen', description: 'Finde Gleichgesinnte für Hobbys und Interessengruppen.', href: '#', icon: ArchiveBoxIcon },
+    { name: 'Politik', description: 'Engagiere dich politisch.', href: '#', icon: ArchiveBoxIcon },
   ];
   
   const dienstleistungen = [
