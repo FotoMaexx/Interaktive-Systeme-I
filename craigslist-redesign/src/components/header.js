@@ -17,6 +17,9 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 import logo from '../assets/img/logo.svg';
 import { Link } from 'react-router-dom';
 
+// Importiere das Heroicons-Icon für das Login-Symbol
+import { UserIcon } from '@heroicons/react/20/solid'; //login
+
 const community = [
     { name: 'Soziales & Veranstaltungen', description: 'Engagiere dich sozial und finde Veranstaltungen.', href: '#', icon: GlobeAltIcon },
     { name: 'Hilfe & Bildung', description: 'Biete oder finde Hilfe und Bildungsangebote.', href: '#', icon: UserGroupIcon },
@@ -57,10 +60,16 @@ function classNames(...classes) {
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false); // Zustand für das Login-Popup
 
   return (
     <header className="bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        
+      
+     
+        
+
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Craigslist</span>
@@ -312,15 +321,35 @@ export default function Example() {
             </Transition>
           </Popover>
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+        
+        {/* Login-Popup */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end"> 
+          {/* Füge den Login-Button hinzu */}
+          <button
+            onClick={() => setLoginOpen(true)} // Öffne das Login-Popup beim Klick auf den Button
+            className="text-sm font-semibold leading-6 text-gray-900 flex items-center"
+          >
+            <UserIcon className="h-5 w-5 mr-1" aria-hidden="true" />
+            Log in
+          </button>
         </div>
       </nav>
+      
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">Login</h2>
+            <button
+              type="button"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              onClick={() => setLoginOpen(false)}
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -472,6 +501,7 @@ export default function Example() {
                   )}
                 </Disclosure>
 
+
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
@@ -498,6 +528,7 @@ export default function Example() {
                   )}
                 </Disclosure>
               </div>
+              
               <div className="py-6">
                 <a
                   href="#"
@@ -508,8 +539,13 @@ export default function Example() {
               </div>
             </div>
           </div>
+          
+          
         </Dialog.Panel>
       </Dialog>
+
+      
+
     </header>
   )
 }
