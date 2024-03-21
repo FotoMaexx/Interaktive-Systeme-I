@@ -6,7 +6,7 @@ const products = [
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
       imageAlt: "Front of men's Basic Tee in black.",
       price: '$35',
-      color: 'Black',
+      color: 'Schwarz',
     },
     {
       id: 2,
@@ -15,7 +15,7 @@ const products = [
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
       imageAlt: "Front of men's Basic Tee in black.",
       price: '$35',
-      color: 'Black',
+      color: 'Schwarz',
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ const products = [
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
       imageAlt: "Front of men's Basic Tee in black.",
       price: '$35',
-      color: 'Black',
+      color: 'Schwarz',
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ const products = [
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
       imageAlt: "Front of men's Basic Tee in black.",
       price: '$35',
-      color: 'Black',
+      color: 'Schwarz',
     },
     // More products...
   ]
