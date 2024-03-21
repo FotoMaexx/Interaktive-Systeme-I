@@ -320,6 +320,7 @@ export default function Example() {
               </Popover.Panel>
             </Transition>
           </Popover>
+          
         </Popover.Group>
         
         {/* Login-Popup */}
@@ -336,19 +337,56 @@ export default function Example() {
       </nav>
       
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-        <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-        <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Login</h2>
-            <button
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setLoginOpen(false)}
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
+  <div className="fixed inset-0 z-10" />
+  <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+    <div className="flex items-center justify-between">
+      <h2 className="text-lg font-semibold">Login</h2>
+      <button
+        id="closeButton" // Füge eine ID für den Schließen-Button hinzu
+        type="button"
+        className="-m-2.5 rounded-md p-2.5 text-gray-700"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        <span className="sr-only">Close menu</span>
+        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+      </button>
+    </div>
+    {/* Hier füge das Login-Formular hinzu */}
+    <form className="mt-6">
+      {/* Username-Feld */}
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          autoComplete="username"
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+        />
+      </div>
+      {/* Passwort-Feld */}
+      <div className="mt-4">
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          autoComplete="current-password"
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+        />
+      </div>
+      {/* Anmelde-Button */}
+      <div className="mt-6">
+        <button
+          type="submit"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Log in
+        </button>
+      </div>
+    </form>
+    {/* Ende des Login-Formulars */}
+    
           
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
