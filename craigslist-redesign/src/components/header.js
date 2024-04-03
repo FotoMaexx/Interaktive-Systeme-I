@@ -373,13 +373,6 @@ export default function Example() {
         {/* Login-Popup */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end"> 
           {/* Füge den Login-Button hinzu */}
-          <button
-            onClick={() => setLoginOpen(true)} // Öffne das Login-Popup beim Klick auf den Button
-            className="text-sm font-semibold leading-6 text-gray-900 flex items-center"
-          >
-            <UserIcon className="h-5 w-5 mr-1" aria-hidden="true" />
-            Log in
-          </button>
         </div>
       </nav>
       
