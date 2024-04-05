@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import Header from './header'
-import { Link } from 'react-router-dom';
-
-
+import { useState } from 'react';
+import Header from './header';
+import { useNavigate } from 'react-router-dom'; // Import von useNavigate
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,6 +11,14 @@ export default function Example() {
 
   const [suche, setSuche] = useState('');
   const [ort, setOrt] = useState('');
+  const navigate = useNavigate();
+
+  // Funktion zum Ausführen der Suche
+  const handleSearch = () => {
+    // Standardwert für den Radius, falls nicht anders angegeben
+    const radius = '10';
+    navigate('/suche', { state: { searchTerm: suche, location: ort, radius } });
+  };
 
   return (
     <div className="bg-white">
@@ -61,9 +67,9 @@ export default function Example() {
               />
             </h2>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link to="/suche" className="rounded-md bg-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              <button onClick={handleSearch} className="rounded-md bg-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Suchen
-              </Link>
+              </button>
               {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                 Mehr Filter <span aria-hidden="true">→</span>
               </a> */}
