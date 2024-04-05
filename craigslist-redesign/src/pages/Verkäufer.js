@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/header';
-import ProductSlider from '../components/homepage-product-slider';
+import ProductSlider2 from '../components/verkäufer-product-slider';
 import { FooterWithSocialLinks as Footer } from '../components/footer';
 import SearchBar from '../components/search-bar';
 
@@ -9,7 +9,7 @@ function Verkäufer() {
         <div className="App">
             <Header />
             <SearchBar />
-            <ProductSlider />
+            <ProductSlider2 />
             <Footer />
         </div>
     );
