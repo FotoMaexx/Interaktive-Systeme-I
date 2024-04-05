@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../components/header';
-import ProductSlider2 from '../components/verkäufer-product-slider';
+import ProductSlider2 from '../components/verkaeufer-product-slider';
 import { FooterWithSocialLinks as Footer } from '../components/footer';
 import SearchBar from '../components/search-bar';
 
-function Verkäufer() {
+function Verkaeufer() {
     return (
         <div className="App">
             <Header />
@@ -15,4 +15,4 @@ function Verkäufer() {
     );
 }
 
-export default Verkäufer;
+export default Verkaeufer;
