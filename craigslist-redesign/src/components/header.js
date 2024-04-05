@@ -1,18 +1,18 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
-    GlobeAltIcon,
-    ArchiveBoxIcon,
-    ChatBubbleOvalLeftIcon,
-    HomeIcon,
-    ShoppingCartIcon,
-    BriefcaseIcon,
-    UserGroupIcon,
-    CurrencyDollarIcon,
-    ShoppingBagIcon,
-    Bars3Icon,
-    XMarkIcon
-  } from '@heroicons/react/24/outline';
+  GlobeAltIcon,
+  ArchiveBoxIcon,
+  ChatBubbleOvalLeftIcon,
+  HomeIcon,
+  ShoppingCartIcon,
+  BriefcaseIcon,
+  UserGroupIcon,
+  CurrencyDollarIcon,
+  ShoppingBagIcon,
+  Bars3Icon,
+  XMarkIcon
+} from '@heroicons/react/24/outline';
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import logo from '../assets/img/logo.svg';
 import { Link } from 'react-router-dom';
@@ -23,42 +23,42 @@ import { Link } from 'react-router-dom';
 import { UserIcon } from '@heroicons/react/20/solid'; //login
 
 const community = [
-    { name: 'Soziales & Veranstaltungen', description: 'Engagiere dich sozial und finde Veranstaltungen.', href: '#', icon: GlobeAltIcon },
-    { name: 'Hilfe & Bildung', description: 'Biete oder finde Hilfe und Bildungsangebote.', href: '#', icon: UserGroupIcon },
-    { name: 'Hobbys & Gruppen', description: 'Finde Gleichgesinnte für Hobbys und Interessengruppen.', href: '#', icon: ArchiveBoxIcon },
-    { name: 'Politik', description: 'Engagiere dich politisch.', href: '#', icon: ArchiveBoxIcon },
-  ];
-  
-  const dienstleistungen = [
-    { name: 'Technik & Hilfe', description: 'Technische Dienstleistungen und Hilfe.', href: '#', icon: ChatBubbleOvalLeftIcon },
-    { name: 'Haus & Garten', description: 'Alles für deinen Hausbedarf und Garten.', href: '#', icon: HomeIcon },
-    { name: 'Finanzen & Recht', description: 'Finanz- und Rechtsberatung.', href: '#', icon: CurrencyDollarIcon },
-  ];
-  
-  const diskussionsforen = [
-    { name: 'Technologie & Wissenschaft', description: 'Diskutiere über die neuesten Technologien und wissenschaftliche Entdeckungen.', href: '#', icon: GlobeAltIcon },
-    { name: 'Kultur & Gesellschaft', description: 'Austausch über kulturelle und gesellschaftliche Themen.', href: '#', icon: ArchiveBoxIcon },
-  ];
-  
-  const immo = [
-    { name: 'Wohnungen & Häuser', description: 'Alles rund um Wohnungen, Häuser und Immobilien.', href: '#', icon: HomeIcon },
-    { name: 'Gewerbeimmobilien & Sonstiges', description: 'Gewerbeimmobilien und andere Immobilienangelegenheiten.', href: '#', icon: BriefcaseIcon },
-  ];
-  
-  const zumVerkauf = [
-    { name: 'Fahrzeuge & Zubehör', description: 'Alles rund um Fahrzeuge und deren Zubehör.', href: '#', icon: ShoppingCartIcon },
-    { name: 'Elektronik & Haushalt', description: 'Finde Elektronikartikel und Haushaltsgegenstände.', href: '#', icon: ShoppingBagIcon },
-  ];
-  
-  const jobs = [
-    { name: 'Karriere & Beruf', description: 'Finde deinen Traumjob oder neue berufliche Herausforderungen.', href: '#', icon: BriefcaseIcon },
-    { name: 'Nebenjobs & Freelancing', description: 'Flexibel arbeiten mit Nebenjobs und Freelancing-Aufträgen.', href: '#', icon: CurrencyDollarIcon },
-  ];
+  { name: 'Soziales & Veranstaltungen', description: 'Engagiere dich sozial und finde Veranstaltungen.', href: '#', icon: GlobeAltIcon },
+  { name: 'Hilfe & Bildung', description: 'Biete oder finde Hilfe und Bildungsangebote.', href: '#', icon: UserGroupIcon },
+  { name: 'Hobbys & Gruppen', description: 'Finde Gleichgesinnte für Hobbys und Interessengruppen.', href: '#', icon: ArchiveBoxIcon },
+  { name: 'Politik', description: 'Engagiere dich politisch.', href: '#', icon: ArchiveBoxIcon },
+];
 
-  const log = [
-    { name: 'Anmelden', description: 'Du hast bereits ein Konto.', href: '#', icon: BriefcaseIcon },
-    { name: 'Registrieren', description: 'Du bist neu hier.', href: '#', icon: CurrencyDollarIcon },
-  ];
+const dienstleistungen = [
+  { name: 'Technik & Hilfe', description: 'Technische Dienstleistungen und Hilfe.', href: '#', icon: ChatBubbleOvalLeftIcon },
+  { name: 'Haus & Garten', description: 'Alles für deinen Hausbedarf und Garten.', href: '#', icon: HomeIcon },
+  { name: 'Finanzen & Recht', description: 'Finanz- und Rechtsberatung.', href: '#', icon: CurrencyDollarIcon },
+];
+
+const diskussionsforen = [
+  { name: 'Technologie & Wissenschaft', description: 'Diskutiere über die neuesten Technologien und wissenschaftliche Entdeckungen.', href: '#', icon: GlobeAltIcon },
+  { name: 'Kultur & Gesellschaft', description: 'Austausch über kulturelle und gesellschaftliche Themen.', href: '#', icon: ArchiveBoxIcon },
+];
+
+const immo = [
+  { name: 'Wohnungen & Häuser', description: 'Alles rund um Wohnungen, Häuser und Immobilien.', href: '#', icon: HomeIcon },
+  { name: 'Gewerbeimmobilien & Sonstiges', description: 'Gewerbeimmobilien und andere Immobilienangelegenheiten.', href: '#', icon: BriefcaseIcon },
+];
+
+const zumVerkauf = [
+  { name: 'Fahrzeuge & Zubehör', description: 'Alles rund um Fahrzeuge und deren Zubehör.', href: '#', icon: ShoppingCartIcon },
+  { name: 'Elektronik & Haushalt', description: 'Finde Elektronikartikel und Haushaltsgegenstände.', href: '#', icon: ShoppingBagIcon },
+];
+
+const jobs = [
+  { name: 'Karriere & Beruf', description: 'Finde deinen Traumjob oder neue berufliche Herausforderungen.', href: '#', icon: BriefcaseIcon },
+  { name: 'Nebenjobs & Freelancing', description: 'Flexibel arbeiten mit Nebenjobs und Freelancing-Aufträgen.', href: '#', icon: CurrencyDollarIcon },
+];
+
+const log = [
+  { name: 'Anmelden', description: 'Du hast bereits ein Konto.', href: '/login', icon: BriefcaseIcon },
+  { name: 'Registrieren', description: 'Du bist neu hier.', href: '/sign-up', icon: CurrencyDollarIcon },
+];
 
 
 function classNames(...classes) {
@@ -72,10 +72,10 @@ export default function Example() {
   return (
     <header className="bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        
-      
-     
-        
+
+
+
+
 
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
@@ -330,9 +330,9 @@ export default function Example() {
 
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-            <UserIcon className="h-5 w-5 mr-1" aria-hidden="true" />
+              <UserIcon className="h-5 w-5 mr-1" aria-hidden="true" />
               Login
-             
+
             </Popover.Button>
 
             <Transition
@@ -355,10 +355,11 @@ export default function Example() {
                         <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                       </div>
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-semibold text-gray-900">
+                        {/* Verwenden Sie hier den Link-Component anstelle von <a> */}
+                        <Link to={item.href} className="block font-semibold text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                         <p className="mt-1 text-gray-600">{item.description}</p>
                       </div>
                     </div>
@@ -367,67 +368,67 @@ export default function Example() {
               </Popover.Panel>
             </Transition>
           </Popover>
-          
+
         </Popover.Group>
-        
+
         {/* Login-Popup */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end"> 
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {/* Füge den Login-Button hinzu */}
         </div>
       </nav>
-      
+
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-  <div className="fixed inset-0 z-10" />
-  <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-    <div className="flex items-center justify-between">
-      <h2 className="text-lg font-semibold">Login</h2>
-      <button
-        id="closeButton" // Füge eine ID für den Schließen-Button hinzu
-        type="button"
-        className="-m-2.5 rounded-md p-2.5 text-gray-700"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        <span className="sr-only">Close menu</span>
-        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-      </button>
-    </div>
-    {/* Hier füge das Login-Formular hinzu */}
-    <form className="mt-6">
-      {/* Username-Feld */}
-      <div>
-        <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          autoComplete="username"
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-        />
-      </div>
-      {/* Passwort-Feld */}
-      <div className="mt-4">
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          autoComplete="current-password"
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-        />
-      </div>
-      {/* Anmelde-Button */}
-      <div className="mt-6">
-        <button
-          type="submit"
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Log in
-        </button>
-      </div>
-    </form>
-    {/* Ende des Login-Formulars */}
-    
-          
+        <div className="fixed inset-0 z-10" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold">Login</h2>
+            <button
+              id="closeButton" // Füge eine ID für den Schließen-Button hinzu
+              type="button"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          {/* Hier füge das Login-Formular hinzu */}
+          <form className="mt-6">
+            {/* Username-Feld */}
+            <div>
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                autoComplete="username"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
+            </div>
+            {/* Passwort-Feld */}
+            <div className="mt-4">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                autoComplete="current-password"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
+            </div>
+            {/* Anmelde-Button */}
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Log in
+              </button>
+            </div>
+          </form>
+          {/* Ende des Login-Formulars */}
+
+
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -606,7 +607,7 @@ export default function Example() {
                   )}
                 </Disclosure>
               </div>
-              
+
               <div className="py-6">
                 <a
                   href="#"
@@ -617,12 +618,12 @@ export default function Example() {
               </div>
             </div>
           </div>
-          
-          
+
+
         </Dialog.Panel>
       </Dialog>
 
-      
+
 
     </header>
   )
