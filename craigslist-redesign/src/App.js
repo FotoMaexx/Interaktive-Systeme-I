@@ -4,12 +4,17 @@ import Home from './pages/Home';
 import Suche from './pages/Suche';
 import Product from './pages/Product';
 import Verkäufer from './pages/Verkäufer';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/verkäufer" element={<Verkäufer />} />
+        <Route path="/verkaeufer" element={<Verkäufer />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<Register />} />
         <Route path="/suche" element={<Suche />} />
         <Route path="/product" element={<Product />} />
         <Route path="/" element={<Home />} />
