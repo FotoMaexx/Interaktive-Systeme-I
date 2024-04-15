@@ -34,7 +34,7 @@ const initialProducts = [
 ];
 
 const sortOptions = [
-  { name: 'Näheste', href: '#', current: false },
+//  { name: 'Näheste', href: '#', current: false },
   { name: 'Neuste', href: '#', current: false },
   { name: 'Preis: niedrig zu hoch', href: '#', current: false },
   { name: 'Preis: hoch zu niedrig', href: '#', current: false },
@@ -92,6 +92,20 @@ export default function FilterPage({ searchTerm }) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
+  const [sortOption, setSortOption] = useState('Neuste');
+
+  const applySorting = (products) => {
+    switch (sortOption) {
+      case 'Neuste':
+        return products.sort((a, b) => b.id - a.id);
+      case 'Preis: niedrig zu hoch':
+        return products.sort((a, b) => parseFloat(b.price.replace('€', '')) - parseFloat(a.price.replace('€', '')));
+      case 'Preis: hoch zu niedrig':
+        return products.sort((a, b) => parseFloat(a.price.replace('€', '')) - parseFloat(b.price.replace('€', '')));
+      default:
+        return products;
+    }
+  };
 
   const updateFilters = (sectionId, value, checked) => {
     const newFilters = { ...activeFilters };
@@ -122,11 +136,14 @@ export default function FilterPage({ searchTerm }) {
         );
       }
   
+      // Anwenden der Sortierung
+      filtered = applySorting(filtered);
+  
       setFilteredProducts(filtered);
     }
   
     filterProducts();
-  }, [searchTerm, activeFilters, initialProducts]);
+  }, [searchTerm, activeFilters, initialProducts, sortOption]);
 
   return (
     <div className="bg-white">
@@ -260,19 +277,22 @@ export default function FilterPage({ searchTerm }) {
                   <div className="py-1">
                     {sortOptions.map((option) => (
                       <Menu.Item key={option.name}>
-                        {({ active }) => (
-                          <a
-                            href={option.href}
-                            className={classNames(
-                              option.current ? 'font-medium text-gray-900' : 'text-gray-500',
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            {option.name}
-                          </a>
-                        )}
-                      </Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={classNames(
+                            option.current ? 'font-medium text-gray-900' : 'text-gray-500',
+                            active ? 'bg-gray-100' : '',
+                            'block w-full text-left px-4 py-2 text-sm'
+                          )}
+                          onClick={() => {
+                            setSortOption(option.name);
+                            option.current = true;
+                          }}
+                        >
+                          {option.name}
+                        </button>
+                      )}
+                    </Menu.Item>
                     ))}
                   </div>
                 </Menu.Items>
