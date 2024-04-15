@@ -2,16 +2,16 @@ import { Typography } from "@material-tailwind/react";
  
 const LINKS = [
   {
-    title: "Product",
-    items: ["Overview", "Features", "Solutions", "Tutorials"],
+    title: "Seiten",
+    items: ["Startseite", "Suchseite v1", "Suchseite v2", "Produktseite"],
   },
   {
-    title: "Company",
-    items: ["About us", "Careers", "Press", "News"],
+    title: "‎",
+    items: ["Verkäuferseite", "Chat", "Login", "Registrieren"],
   },
   {
-    title: "Resource",
-    items: ["Blog", "Newsletter", "Events", "Help center"],
+    title: "Craigslist",
+    items: ["Zu Craigslist"],
   },
 ];
  
@@ -23,7 +23,7 @@ export function FooterWithSocialLinks() {
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Typography variant="h5" className="mb-6">
-            Craigslist Redesign
+            craigslist
           </Typography>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
@@ -56,7 +56,7 @@ export function FooterWithSocialLinks() {
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
-            &copy; {currentYear} <a href="https://material-tailwind.com/">Material Tailwind</a>. All
+            &copy; {currentYear} Pia Schwarz & Maximilian Hauser | Uni Ulm 2024. All
             Rights Reserved.
           </Typography>
         </div>
