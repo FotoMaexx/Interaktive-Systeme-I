@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
-import { XMarkIcon, ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid';
+import { XMarkIcon, ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, Bars3Icon } from '@heroicons/react/20/solid';
 import ProductGrid from './product-grid';
+import ProductList from './product-list';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -15,7 +16,7 @@ const initialProducts = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '35€',
-    color: 'black',
+    color: 'Black',
     size: 'M',
     category: 'abholung'
   },
@@ -26,7 +27,7 @@ const initialProducts = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '70€',
-    color: 'blue',
+    color: 'Blue',
     size: 'XL',
     category: 'paypal'
   },
@@ -34,7 +35,7 @@ const initialProducts = [
 ];
 
 const sortOptions = [
-//  { name: 'Näheste', href: '#', current: false },
+  //  { name: 'Näheste', href: '#', current: false },
   { name: 'Neuste', href: '#', current: false },
   { name: 'Preis: niedrig zu hoch', href: '#', current: false },
   { name: 'Preis: hoch zu niedrig', href: '#', current: false },
@@ -52,16 +53,16 @@ const filters = [
     id: 'color',
     name: 'Farbe',
     options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: false },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-      { value: 'red', label: 'Red', checked: false },
-      { value: 'yellow', label: 'Yellow', checked: false },
-      { value: 'gray', label: 'Gray', checked: false },
-      { value: 'black', label: 'Black', checked: false },
+      { value: 'White', label: 'White', checked: false },
+      { value: 'Beige', label: 'Beige', checked: false },
+      { value: 'Blue', label: 'Blue', checked: false },
+      { value: 'Brown', label: 'Brown', checked: false },
+      { value: 'Green', label: 'Green', checked: false },
+      { value: 'Purple', label: 'Purple', checked: false },
+      { value: 'Red', label: 'Red', checked: false },
+      { value: 'Yellow', label: 'Yellow', checked: false },
+      { value: 'Gray', label: 'Gray', checked: false },
+      { value: 'Black', label: 'Black', checked: false },
     ],
   },
   {
@@ -93,6 +94,11 @@ export default function FilterPage({ searchTerm }) {
   const [activeFilters, setActiveFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
   const [sortOption, setSortOption] = useState('Neuste');
+  const [isGridView, setIsGridView] = useState(true);
+
+  const toggleView = () => {
+    setIsGridView(!isGridView); // Umschalten zwischen den Ansichten
+  };
 
   const applySorting = (products) => {
     switch (sortOption) {
@@ -121,27 +127,27 @@ export default function FilterPage({ searchTerm }) {
   useEffect(() => {
     function filterProducts() {
       let filtered = initialProducts;
-  
+
       // Filterung nach aktiven Filtern
       Object.keys(activeFilters).forEach(key => {
         if (activeFilters[key].length > 0) {
           filtered = filtered.filter(product => activeFilters[key].includes(product[key]));
         }
       });
-  
+
       // Filterung nach Suchbegriff
       if (searchTerm) {
-        filtered = filtered.filter(product => 
+        filtered = filtered.filter(product =>
           product.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
       }
-  
+
       // Anwenden der Sortierung
       filtered = applySorting(filtered);
-  
+
       setFilteredProducts(filtered);
     }
-  
+
     filterProducts();
   }, [searchTerm, activeFilters, initialProducts, sortOption]);
 
@@ -277,31 +283,31 @@ export default function FilterPage({ searchTerm }) {
                   <div className="py-1">
                     {sortOptions.map((option) => (
                       <Menu.Item key={option.name}>
-                      {({ active }) => (
-                        <button
-                          className={classNames(
-                            option.current ? 'font-medium text-gray-900' : 'text-gray-500',
-                            active ? 'bg-gray-100' : '',
-                            'block w-full text-left px-4 py-2 text-sm'
-                          )}
-                          onClick={() => {
-                            setSortOption(option.name);
-                            option.current = true;
-                          }}
-                        >
-                          {option.name}
-                        </button>
-                      )}
-                    </Menu.Item>
+                        {({ active }) => (
+                          <button
+                            className={classNames(
+                              option.current ? 'font-medium text-gray-900' : 'text-gray-500',
+                              active ? 'bg-gray-100' : '',
+                              'block w-full text-left px-4 py-2 text-sm'
+                            )}
+                            onClick={() => {
+                              setSortOption(option.name);
+                              option.current = true;
+                            }}
+                          >
+                            {option.name}
+                          </button>
+                        )}
+                      </Menu.Item>
                     ))}
                   </div>
                 </Menu.Items>
               </Transition>
             </Menu>
 
-            <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
-              <span className="sr-only">View grid</span>
-              <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
+            <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7" onClick={toggleView}>
+              <span className="sr-only">View {isGridView ? 'list' : 'grid'}</span>
+              {isGridView ? <Bars3Icon className="h-5 w-5" aria-hidden="true" /> : <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />}
             </button>
             <button
               type="button"
@@ -372,7 +378,7 @@ export default function FilterPage({ searchTerm }) {
               ))}
             </form>
             <div className="lg:col-span-3">
-              <ProductGrid products={filteredProducts} />
+              {isGridView ? <ProductGrid products={filteredProducts} /> : <ProductList products={filteredProducts} />}
             </div>
           </div>
         </section>
