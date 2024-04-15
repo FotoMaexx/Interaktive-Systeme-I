@@ -1,5 +1,5 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react';
+import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
   GlobeAltIcon,
   ArchiveBoxIcon,
@@ -13,14 +13,10 @@ import {
   Bars3Icon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, UserIcon } from '@heroicons/react/20/solid';
 import logo from '../assets/img/logo.svg';
 import { Link } from 'react-router-dom';
-
-
-
-// Importiere das Heroicons-Icon für das Login-Symbol
-import { UserIcon } from '@heroicons/react/20/solid'; //login
+import { useAuth } from '../contexts/AuthContext';
 
 const community = [
   { name: 'Soziales & Veranstaltungen', description: 'Engagiere dich sozial und finde Veranstaltungen.', href: '#', icon: GlobeAltIcon },
@@ -55,28 +51,27 @@ const jobs = [
   { name: 'Nebenjobs & Freelancing', description: 'Flexibel arbeiten mit Nebenjobs und Freelancing-Aufträgen.', href: '#', icon: CurrencyDollarIcon },
 ];
 
-const log = [
-  { name: 'Anmelden', description: 'Du hast bereits ein Konto.', href: '/login', icon: BriefcaseIcon },
-  { name: 'Registrieren', description: 'Du bist neu hier.', href: '/sign-up', icon: CurrencyDollarIcon },
-];
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [loginOpen, setLoginOpen] = useState(false); // Zustand für das Login-Popup
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setMobileMenuOpen(false);
+    } catch (error) {
+      console.error('Fehler beim Abmelden', error);
+    }
+  };
 
   return (
     <header className="bg-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-
-
-
-
-
+      <nav className="mx-auto max-w-7xl items-center justify-between p-6 lg:px-8 flex">
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Craigslist</span>
@@ -327,114 +322,62 @@ export default function Example() {
               </Popover.Panel>
             </Transition>
           </Popover>
-
-          <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              <UserIcon className="h-5 w-5 mr-1" aria-hidden="true" />
-              Login
-
-            </Popover.Button>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
-            >
-              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
-                  {log.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                    >
-                      <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                        <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                      </div>
-                      <div className="flex-auto">
-                        {/* Verwenden Sie hier den Link-Component anstelle von <a> */}
-                        <Link to={item.href} className="block font-semibold text-gray-900">
-                          {item.name}
-                          <span className="absolute inset-0" />
+        {/* User account management popover */}
+        <Popover className="relative">
+            {({ open }) => (
+              <>
+                <Popover.Button className="flex items-center text-sm font-semibold leading-6 text-gray-900">
+                  {user ? (
+                    <img src={user.profilePic} alt="Profilbild" className="h-8 w-8 rounded-full" />
+                  ) : (
+                    <UserIcon className="h-5 w-5 mr-1" />
+                  )}
+                  <ChevronDownIcon className={`ml-2 h-5 w-5 ${open ? 'transform rotate-180' : ''}`} />
+                </Popover.Button>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0 translate-y-1"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 translate-y-1"
+                >
+                  <Popover.Panel className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="p-4">
+                      {user ? (
+                        <button
+                          onClick={handleLogout}
+                          className="w-full text-left text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 rounded-md px-3 py-2"
+                        >
+                          Abmelden
+                        </button>
+                      ) : (
+                        <Link
+                          to="/login"
+                          className="block w-full text-left text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 rounded-md px-3 py-2"
+                        >
+                          Log In
                         </Link>
-                        <p className="mt-1 text-gray-600">{item.description}</p>
-                      </div>
+                      )}
                     </div>
-                  ))}
-                </div>
-              </Popover.Panel>
-            </Transition>
+                  </Popover.Panel>
+                </Transition>
+              </>
+            )}
           </Popover>
-
         </Popover.Group>
-
-        {/* Login-Popup */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {/* Füge den Login-Button hinzu */}
-        </div>
       </nav>
 
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Login</h2>
-            <button
-              id="closeButton" // Füge eine ID für den Schließen-Button hinzu
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          {/* Hier füge das Login-Formular hinzu */}
-          <form className="mt-6">
-            {/* Username-Feld */}
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
-              <input
-                type="text"
-                name="username"
-                id="username"
-                autoComplete="username"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-            {/* Passwort-Feld */}
-            <div className="mt-4">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                autoComplete="current-password"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-            {/* Anmelde-Button */}
-            <div className="mt-6">
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Log in
-              </button>
-            </div>
-          </form>
-          {/* Ende des Login-Formulars */}
-
-
-          <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src={logo}
                 alt=""
               />
             </a>
@@ -609,12 +552,21 @@ export default function Example() {
               </div>
 
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
+                {user ? (
+                  <button
+                    onClick={handleLogout}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Abmelden
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Log in
+                  </Link>
+                )}
               </div>
             </div>
           </div>
