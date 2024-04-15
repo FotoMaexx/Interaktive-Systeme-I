@@ -3,15 +3,18 @@ import { Typography } from "@material-tailwind/react";
 const LINKS = [
   {
     title: "Seiten",
-    items: ["Startseite", "Suchseite v1", "Suchseite v2", "Produktseite"],
+    items: ["Startseite", "Suchseite", "Produktseite", "Verkäuferseite"],
+    href: ["/", "/search", "/product", "/verkaeufer"],
   },
   {
     title: "‎",
-    items: ["Verkäuferseite", "Chat", "Login", "Registrieren"],
+    items: ["Chat", "Login", "Passwort vergessen", "Registrieren"],
+    href: ["/chat", "/login","forgot-password", "/sign-up"],
   },
   {
     title: "Craigslist",
     items: ["Zu Craigslist"],
+    href: ["https://www.craigslist.org/"],
   },
 ];
  
@@ -26,7 +29,7 @@ export function FooterWithSocialLinks() {
             craigslist
           </Typography>
           <div className="grid grid-cols-3 justify-between gap-4">
-            {LINKS.map(({ title, items }) => (
+            {LINKS.map(({ title, items, href }) => (
               <ul key={title}>
                 <Typography
                   variant="small"
@@ -39,7 +42,7 @@ export function FooterWithSocialLinks() {
                   <li key={link}>
                     <Typography
                       as="a"
-                      href="#"
+                      href={href[items.indexOf(link)]}
                       color="gray"
                       className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
                     >
