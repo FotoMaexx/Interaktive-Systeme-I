@@ -14,21 +14,21 @@ const initialProducts = [
     href: '/Product',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: '35€',
     color: 'black',
     size: 'M',
     category: 'abholung'
   },
   {
     id: 2,
-    name: 'Basic Tee',
+    name: 'Basic Hoodie',
     href: '/Product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'black',
-    size: 'M',
-    category: 'abholung'
+    price: '70€',
+    color: 'blue',
+    size: 'XL',
+    category: 'paypal'
   },
   // Weitere Produkte hinzufügen
 ];
@@ -88,57 +88,43 @@ const filters = [
   },
 ];
 
-export default function FilterPage() {
+export default function FilterPage({ searchTerm }) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState({});
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
 
-  // Aktualisiere Filter basierend auf den Auswahlen
   const updateFilters = (sectionId, value, checked) => {
     const newFilters = { ...activeFilters };
-    
-    // Sicherstellen, dass das Array existiert
-    if (!newFilters[sectionId]) {
-      newFilters[sectionId] = [];
-    }
-    
+    if (!newFilters[sectionId]) newFilters[sectionId] = [];
     if (checked) {
-      // Hinzufügen des Wertes, wenn er noch nicht vorhanden ist
-      if (!newFilters[sectionId].includes(value)) {
-        newFilters[sectionId].push(value);
-      }
+      if (!newFilters[sectionId].includes(value)) newFilters[sectionId].push(value);
     } else {
-      // Entfernen des Wertes, wenn der Filter deaktiviert wird
       newFilters[sectionId] = newFilters[sectionId].filter(item => item !== value);
     }
-  
     setActiveFilters(newFilters);
   };
 
-  // Wende Filter auf Produkte an
   useEffect(() => {
     let products = initialProducts;
   
-    // Überprüfung, ob Filter aktiv sind
-    const filtersActive = Object.keys(activeFilters).some(
-      key => activeFilters[key].length > 0
-    );
+    // Filter nach aktiven Filtern
+    Object.keys(activeFilters).forEach(filterKey => {
+      if (activeFilters[filterKey].length > 0) {
+        products = products.filter(product =>
+          activeFilters[filterKey].includes(product[filterKey])
+        );
+      }
+    });
   
-    if (filtersActive) {
-      // Anwenden der aktiven Filter auf die Produktliste
-      Object.keys(activeFilters).forEach(filterKey => {
-        if (activeFilters[filterKey].length > 0) {
-          products = products.filter(product =>
-            activeFilters[filterKey].includes(product[filterKey])
-          );
-        }
-      });
+    // Filter nach Suchbegriff
+    if (searchTerm && typeof searchTerm === 'string') {
+      products = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
   
-    // Setzt die gefilterten Produkte, oder alle Produkte, wenn keine Filter aktiv sind
     setFilteredProducts(products);
-  }, [activeFilters, initialProducts]);
-  
+  }, [activeFilters, searchTerm, initialProducts]);
 
   return (
     <div className="bg-white">
