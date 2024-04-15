@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function Example() {
+export default function SearchBar({ updateSearchTerm }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('');
   const [radius, setRadius] = useState('');
@@ -11,7 +11,6 @@ export default function Example() {
   const locationHook = useLocation();
 
   useEffect(() => {
-    // Zustandsdaten aus der Navigation auslesen
     const state = locationHook.state;
     if (state) {
       setSearchTerm(state.searchTerm || '');
@@ -19,6 +18,12 @@ export default function Example() {
       setRadius(state.radius || '');
     }
   }, [locationHook]);
+
+  const handleInputChange = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    updateSearchTerm(newSearchTerm);
+  };
 
   const handleSearchClick = () => {
     navigate('/suche', { state: { searchTerm, location, radius } });
@@ -34,18 +39,11 @@ export default function Example() {
 
   return (
     <div className="max-w-7xl px-4 sm:px-6 lg:px-8 justify-center mx-auto mt-2">
-      <div
-        ref={searchRef}
-        className="relative rounded-md shadow-sm flex items-center border border-gray-300"
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        tabIndex="-1"
-      >
-        <span className="text-gray-900 font-bold sm:text-sm px-3">Was?:</span>
+      <div ref={searchRef} className="relative rounded-md shadow-sm flex items-center border border-gray-300" onFocus={handleFocus} onBlur={handleBlur} tabIndex="-1">
         <input
           type="text"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleInputChange}
           className="pl-2 py-2 text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm flex-grow border-none focus:border-none focus:ring-0"
           placeholder="Suchbegriff"
           onFocus={handleFocus}

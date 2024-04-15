@@ -1,5 +1,4 @@
-// Suche.js
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/header';
 import FilterPage from '../components/filterpage';
 import SearchBar from '../components/search-bar';
@@ -11,8 +10,8 @@ export default function Suche() {
   return (
     <div className="App">
       <Header />
-      <SearchBar setSearchTerm={setSearchTerm} />
-      <FilterPage searchTerm={searchTerm} />
+      <SearchBar updateSearchTerm={setSearchTerm} />
+      <FilterPage key={searchTerm} searchTerm={searchTerm} />
       <Footer />
     </div>
   );

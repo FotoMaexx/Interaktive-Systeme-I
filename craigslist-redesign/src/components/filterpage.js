@@ -105,26 +105,28 @@ export default function FilterPage({ searchTerm }) {
   };
 
   useEffect(() => {
-    let products = initialProducts;
+    function filterProducts() {
+      let filtered = initialProducts;
   
-    // Filter nach aktiven Filtern
-    Object.keys(activeFilters).forEach(filterKey => {
-      if (activeFilters[filterKey].length > 0) {
-        products = products.filter(product =>
-          activeFilters[filterKey].includes(product[filterKey])
+      // Filterung nach aktiven Filtern
+      Object.keys(activeFilters).forEach(key => {
+        if (activeFilters[key].length > 0) {
+          filtered = filtered.filter(product => activeFilters[key].includes(product[key]));
+        }
+      });
+  
+      // Filterung nach Suchbegriff
+      if (searchTerm) {
+        filtered = filtered.filter(product => 
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
       }
-    });
   
-    // Filter nach Suchbegriff
-    if (searchTerm && typeof searchTerm === 'string') {
-      products = products.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      setFilteredProducts(filtered);
     }
   
-    setFilteredProducts(products);
-  }, [activeFilters, searchTerm, initialProducts]);
+    filterProducts();
+  }, [searchTerm, activeFilters, initialProducts]);
 
   return (
     <div className="bg-white">

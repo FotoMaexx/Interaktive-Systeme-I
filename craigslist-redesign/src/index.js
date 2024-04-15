@@ -7,7 +7,7 @@ import App from './App';
 import { AuthProvider } from './contexts/AuthContext';
 
 const container = document.getElementById('root');
-const root = createRoot(container); // Erstellen eines Root-Knotens für die React-Anwendung
+const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
