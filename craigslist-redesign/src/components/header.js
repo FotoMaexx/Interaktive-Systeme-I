@@ -70,8 +70,8 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-purple-600">
-    <nav className="mx-auto max-w-7xl items-center justify-between p-6 lg:px-8 flex text-white"> {/* Änderung der Hintergrundfarbe und Textfarbe */}
+    <header className="bg-purple-600"> {/* Änderung der Hintergrundfarbe */}
+    <nav className="mx-auto max-w-7xl items-center justify-between p-6 lg:px-8 flex text-white"> {/* Änderung der Textfarbe */}
       <nav className="mx-auto max-w-7xl items-center justify-between p-6 lg:px-8 flex">
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
