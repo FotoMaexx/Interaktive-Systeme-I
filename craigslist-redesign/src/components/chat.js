@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/solid'
+import seller from '../assets/img/pp.png'
+
+const reviews = { href: '/verkaeufer', average: 4, totalCount: 117 }
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
 export default function ChatWindow() {
   const [messages, setMessages] = useState([]);
@@ -80,13 +88,35 @@ export default function ChatWindow() {
           </div>
 
           {/* Verkäufer-Info Bereich */}
-          <div className="w-full md:w-1/3 p-4 bg-white">
-            <h3 className="text-lg font-semibold border-b border-gray-300 pb-2">Verkäufer Informationen</h3>
-            <div className="mt-4 text-sm">
-              <p><strong>Name:</strong> Max Mustermann</p>
-              <p><strong>Standort:</strong> Berlin, Deutschland</p>
-              <p><strong>Bewertung:</strong> ★★★★☆</p>
-              <p><strong>Weitere Infos:</strong> Erfahrener Verkäufer mit über 200 Verkäufen.</p>
+          <div className="w-full md:w-1/3 p-4 bg-cl2">
+            <div className="flex flex-col items-center justify-center mt-7 md:mt-16">
+              <a href="/verkaeufer" className="flex flex-col items-center justify-center">
+                <h1 className="text-1xl font-bold tracking-tight text-white sm:text-2xl mb-0">Ihr Verkäufer</h1>
+                <img src={seller} alt="Seller" className="w-20 h-20 rounded-full mb-3 mt-2" />
+                <h2 className="text-l font-bold tracking-tight text-white sm:text-1xl mb-0">Max Mustermann</h2>
+              </a>
+              {/* Reviews */}
+              <div className="mt-3">
+                <h3 className="sr-only">Reviews</h3>
+                <div className="flex items-center">
+                  <div className="flex items-center">
+                    {[0, 1, 2, 3, 4].map((rating) => (
+                      <StarIcon
+                        key={rating}
+                        className={classNames(
+                          reviews.average > rating ? 'text-cl1' : 'text-gray-300',
+                          'h-5 w-5 flex-shrink-0'
+                        )}
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
+                  <p className="sr-only">{reviews.average} out of 5 stars</p>
+                  <a href={reviews.href} className="ml-3 text-sm font-medium text-gray-300 hover:text-cl1">
+                    {reviews.totalCount} Bewertungen
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
