@@ -6,15 +6,14 @@ module.exports = {
       gridTemplateRows: {
         '[auto,auto,1fr]': 'auto auto 1fr',
       },
-    },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'cl1': '#9C4DCC',
-      'cl2': '#38006B',
-      'cl3': '#FFFFFF',
-      'cl4': '#8D8D8D',
-      'cl5': '#000000',
+      colors: {
+        'cl2': '#9C4DCC',
+        'cl1': '#38006B',
+        'cl3': '#FFFFFF',
+        'cl4': '#8D8D8D',
+        'cl5': '#000000',
+        'cl3-50': 'rgba(255, 255, 255, 0.5)',
+      },
     },
   },
   plugins: [
