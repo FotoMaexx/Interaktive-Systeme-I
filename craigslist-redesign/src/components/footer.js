@@ -1,5 +1,7 @@
 import { Typography } from "@material-tailwind/react";
- 
+import { Link } from "react-router-dom";
+import logo from '../assets/img/logo.svg';
+
 const LINKS = [
   {
     title: "Seiten",
@@ -25,9 +27,10 @@ export function FooterWithSocialLinks() {
     <footer className="relative w-full mt-24">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <Typography variant="h5" className="mb-6">
-            craigslist
-          </Typography>
+        <Link to="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">Craigslist</span>
+            <img className="h-8 w-auto" src={logo} alt="" />
+          </Link>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items, href }) => (
               <ul key={title}>
