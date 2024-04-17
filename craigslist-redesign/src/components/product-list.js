@@ -7,8 +7,7 @@ export default function ProductList({ products }) {
             <div key={product.id} className="group flex items-center space-x-4 border-b border-gray-200 pb-6">
               <div className="flex-shrink-0 w-24 h-24 overflow-hidden rounded-md bg-gray-200">
                 <img
-                  src={product.imageSrc}
-                  alt={product.imageAlt}
+                  src={product.images[0].src}
                   className="h-full w-full object-cover"
                 />
               </div>
