@@ -3,7 +3,7 @@ import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon, ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, Bars3Icon } from '@heroicons/react/20/solid';
 import ProductGrid from './product-grid';
 import ProductList from './product-list';
-import { initialProducts } from './products';
+import { products } from './products';
 
 
 function classNames(...classes) {
@@ -11,7 +11,6 @@ function classNames(...classes) {
 }
 
 const sortOptions = [
-  //  { name: 'Näheste', href: '#', current: false },
   { name: 'Neuste', href: '#', current: false },
   { name: 'Preis: niedrig zu hoch', href: '#', current: false },
   { name: 'Preis: hoch zu niedrig', href: '#', current: false },
@@ -68,7 +67,7 @@ const filters = [
 export default function FilterPage({ searchTerm }) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState({});
-  const [filteredProducts, setFilteredProducts] = useState(initialProducts);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState('Neuste');
   const [isGridView, setIsGridView] = useState(true);
 
@@ -102,7 +101,7 @@ export default function FilterPage({ searchTerm }) {
 
   useEffect(() => {
     function filterProducts() {
-      let filtered = initialProducts;
+      let filtered = products;
 
       // Filterung nach aktiven Filtern
       Object.keys(activeFilters).forEach(key => {
@@ -125,7 +124,7 @@ export default function FilterPage({ searchTerm }) {
     }
 
     filterProducts();
-  }, [searchTerm, activeFilters, initialProducts, sortOption]);
+  }, [searchTerm, activeFilters, products, sortOption]);
 
   return (
     <div className="bg-white">
