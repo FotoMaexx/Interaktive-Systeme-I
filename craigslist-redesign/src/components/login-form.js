@@ -31,7 +31,7 @@ export default function Example() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cl1 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -42,7 +42,7 @@ export default function Example() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <Link to="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  <Link to="/forgot-password" className="font-semibold text-cl1 hover:text-cl1">
                     Passwort vergessen?
                   </Link>
                 </div>
@@ -54,7 +54,7 @@ export default function Example() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cl1 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function Example() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Noch kein Mitglied?{' '}
-            <Link to="/sign-up" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <Link to="/sign-up" className="font-semibold leading-6 text-cl1 hover:text-cl1">
               Registriere dich noch heute!
             </Link>
           </p>

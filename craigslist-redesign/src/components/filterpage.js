@@ -230,7 +230,7 @@ export default function FilterPage({ searchTerm }) {
                                     defaultValue={option.value}
                                     type="checkbox"
                                     defaultChecked={option.checked}
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                    className="h-4 w-4 rounded border-gray-300 text-cl1 focus:ring-cl2"
                                     onChange={e => updateFilters(section.id, option.value, e.target.checked)}
                                   />
                                   <label
@@ -359,7 +359,7 @@ export default function FilterPage({ searchTerm }) {
                                 defaultValue={option.value}
                                 type="checkbox"
                                 defaultChecked={option.checked}
-                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                className="h-4 w-4 rounded border-gray-300 text-cl1 focus:ring-cl2"
                                 onChange={e => updateFilters(section.id, option.value, e.target.checked)}
                               />
                               <label

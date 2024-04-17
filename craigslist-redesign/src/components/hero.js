@@ -52,7 +52,7 @@ export default function Hero() {
               />
             </h2>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <button onClick={handleSearch} className="rounded-md bg-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              <button onClick={handleSearch} className="rounded-md bg-cl1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cl2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cl2">
                 Suchen
               </button>
             </div>

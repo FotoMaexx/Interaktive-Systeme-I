@@ -30,11 +30,11 @@ export default function SearchBar({ updateSearchTerm }) {
   };
 
   const handleFocus = () => {
-    searchRef.current.classList.add('ring-2', 'ring-indigo-500', 'border-transparent');
+    searchRef.current.classList.add('ring-2', 'ring-cl1', 'border-transparent');
   };
 
   const handleBlur = () => {
-    searchRef.current.classList.remove('ring-2', 'ring-indigo-500', 'border-transparent');
+    searchRef.current.classList.remove('ring-2', 'ring-cl1', 'border-transparent');
   };
 
   return (
@@ -64,7 +64,7 @@ export default function SearchBar({ updateSearchTerm }) {
         <select
           value={radius}
           onChange={(e) => setRadius(e.target.value)}
-          className="ml-2 py-2 text-gray-700 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-none focus:outline-none focus:ring-0 rounded-md"
+          className="ml-2 py-2 text-gray-700 focus:ring-cl1 focus:border-cl1 sm:text-sm border-none focus:outline-none focus:ring-0 rounded-md"
         >
           <option value="">Umkreis wählen</option>
           <option value="5">5km</option>

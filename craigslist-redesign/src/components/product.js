@@ -109,7 +109,7 @@ export default function Example() {
                   ))}
                 </div>
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                <a href={reviews.href} className="ml-3 text-sm font-medium text-cl1 hover:text-cl2">
                   {reviews.totalCount} reviews
                 </a>
               </div>
