@@ -3,36 +3,12 @@ import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon, ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, Bars3Icon } from '@heroicons/react/20/solid';
 import ProductGrid from './product-grid';
 import ProductList from './product-list';
+import { initialProducts } from './products';
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
-
-const initialProducts = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '/Product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '35€',
-    color: 'Black',
-    size: 'M',
-    category: 'abholung'
-  },
-  {
-    id: 2,
-    name: 'Basic Hoodie',
-    href: '/Product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '70€',
-    color: 'Blue',
-    size: 'XL',
-    category: 'paypal'
-  },
-  // Weitere Produkte hinzufügen
-];
 
 const sortOptions = [
   //  { name: 'Näheste', href: '#', current: false },
