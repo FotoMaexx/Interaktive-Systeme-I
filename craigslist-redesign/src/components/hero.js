@@ -38,7 +38,7 @@ export default function Hero() {
     <div>
       <Header />
       <div className="relative isolate">
-        <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', transform: 'scale(1.05)' }} className="absolute inset-0 z-0 filter blur-8px">
+        <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', transform: 'scale(1.05)', filter: 'blur(8px)'}} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-white opacity-35"></div>
         </div>
 
