@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
-import { RadioGroup } from '@headlessui/react'
+import { StarIcon } from '@heroicons/react/24/solid'
 import ChatButton from './chatButton'
 import { products } from './products';
+import seller from '../assets/img/pp.png'
+
+const reviews = { href: '/verkaeufer', average: 4, totalCount: 117 }
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -50,10 +53,39 @@ export default function ProductPage({ id }) {
                             />
                         </div>
                     </div>
-                    <div className="mt-4 lg:row-span-3 lg:mt-0 lg:border-l lg:border-gray-200 pl-8">
+                    <div className="flex flex-col content-between mt-4 lg:row-span-3 lg:mt-0 lg:border-l lg:border-gray-200 pl-8 pr-8 pt-8 bg-cl2 rounded-3xl">
                         <h2 className="sr-only">Product information</h2>
-                        <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
-                            <ChatButton />
+                        <p className="ml-4 mt-4 text-5xl font-bold  tracking-tight text-white">{product.price}</p>
+                        <div className="flex flex-col items-center justify-center mt-7 md:mt-16">
+                            <a href="/verkaeufer" className="flex flex-col items-center justify-center">
+                                <h1 className="text-1xl font-bold tracking-tight text-white sm:text-2xl mb-0">Ihr Verkäufer</h1>
+                                <img src={seller} alt="Seller" className="w-20 h-20 rounded-full mb-3 mt-2" />
+                                <h2 className="text-l font-bold tracking-tight text-white sm:text-1xl mb-0">Max Mustermann</h2>
+                            </a>
+                            {/* Reviews */}
+                            <div className="mt-3">
+                                <h3 className="sr-only">Reviews</h3>
+                                <div className="flex items-center">
+                                    <div className="flex items-center">
+                                        {[0, 1, 2, 3, 4].map((rating) => (
+                                            <StarIcon
+                                                key={rating}
+                                                className={classNames(
+                                                    reviews.average > rating ? 'text-cl1' : 'text-gray-300',
+                                                    'h-5 w-5 flex-shrink-0'
+                                                )}
+                                                aria-hidden="true"
+                                            />
+                                        ))}
+                                    </div>
+                                    <p className="sr-only">{reviews.average} out of 5 stars</p>
+                                    <a href={reviews.href} className="ml-3 text-sm font-medium text-gray-300 hover:text-cl1">
+                                        {reviews.totalCount} Bewertungen
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <ChatButton />
                     </div>
                 </div>
 
