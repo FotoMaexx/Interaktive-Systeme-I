@@ -12,7 +12,7 @@ export default function HomepageProductSlider() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Aktuell heiß in deiner Nähe</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Produkte des Verkäufers</h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {randomProducts.map((product) => (
             <div key={product.id} className="group relative">
@@ -28,7 +28,9 @@ export default function HomepageProductSlider() {
                     </a>
                   </h3>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                <button className="bg-purple-600 text-white px-3 py-1.5 rounded-md text-sm font-medium h-10">
+                  {product.price}
+                </button>
               </div>
             </div>
           ))}
@@ -37,6 +39,7 @@ export default function HomepageProductSlider() {
     </div>
   );
 }
+
 
 
 /*     <div class="bg-white py-24 sm:py-32">
