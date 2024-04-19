@@ -28,7 +28,7 @@ export default function HomepageProductSlider() {
                     </a>
                   </h3>
                 </div>
-                <button className="bg-purple-600 text-white px-3 py-1.5 rounded-md text-sm font-medium">
+                <button className="bg-cl2 text-white px-3 py-1.5 rounded-md text-sm font-medium">
                   {product.price}
                 </button>
               </div>
