@@ -9,7 +9,7 @@ function Product() {
         <div className="App">
             <Header />
             <SearchBar />
-            <ProductPage id="1" />
+            <ProductPage id="9" />
             <Footer />
         </div>
     );
